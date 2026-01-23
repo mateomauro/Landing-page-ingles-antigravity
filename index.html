@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLevel English Institute</title>
+    <meta name="description" content="Aprende inglés práctico y real con clases dinámicas y profesores expertos.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1', // Indigo principal
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        accent: {
+                            400: '#fbbf24', // Amber/Yellow para CTA
+                            500: '#f59e0b',
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": {
+                                transform: "translate(0px, 0px) scale(1)",
+                            },
+                            "33%": {
+                                transform: "translate(30px, -50px) scale(1.1)",
+                            },
+                            "66%": {
+                                transform: "translate(-20px, 20px) scale(0.9)",
+                            },
+                            "100%": {
+                                transform: "translate(0px, 0px) scale(1)",
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ajustes finos para móviles */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-700 antialiased bg-gray-50">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="bg-brand-600 text-white p-2 rounded-lg">
+                        <i data-lucide="languages" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">NextLevel<span
+                            class="text-brand-600">English</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beneficios" class="text-gray-600 hover:text-brand-600 font-medium transition">Por qué
+                        elegirnos</a>
+                    <a href="#cursos" class="text-gray-600 hover:text-brand-600 font-medium transition">Cursos</a>
+                    <a href="#metodologia"
+                        class="text-gray-600 hover:text-brand-600 font-medium transition">Metodología</a>
+                    <a href="#contacto"
+                        class="bg-brand-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-brand-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Inscribirse Ahora
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden flex flex-col pt-20 px-6 space-y-6">
+            <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-500">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <a href="#beneficios" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Por qué
+                elegirnos</a>
+            <a href="#cursos" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Cursos</a>
+            <a href="#metodologia" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Metodología</a>
+            <a href="#contacto"
+                class="bg-brand-600 text-white text-center py-3 rounded-lg font-semibold shadow-md mobile-link">
+                Reservar Vacante
+            </a>
+        </div>
+        <!-- Overlay -->
+        <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden glass"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <!-- Text Content -->
+                <div class="mb-12 lg:mb-0 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold mb-6 border border-brand-100">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span> Inscripciones Abiertas 2024
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+                        Hablá inglés con <br class="hidden lg:block">
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">confianza
+                            y fluidez</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Olvidate de memorizar reglas sin sentido. En NextLevel aprendés el inglés que necesitás para
+                        viajar, trabajar y conectarte con el mundo real.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contacto"
+                            class="flex items-center justify-center bg-brand-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-brand-700 hover:shadow-brand-500/30 transition transform hover:-translate-y-1">
+                            Empezar hoy
+                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="#cursos"
+                            class="flex items-center justify-center bg-white text-gray-700 border border-gray-200 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 hover:border-gray-300 transition">
+                            Ver niveles
+                        </a>
+                    </div>
+
+                    <!-- Social Proof Mini -->
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
+                        <div class="flex -space-x-2">
+                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100"
+                                alt="Student">
+                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100"
+                                alt="Student">
+                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100"
+                                alt="Student">
+                        </div>
+                        <p>+500 alumnos graduados</p>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative lg:h-full">
+                    <div
+                        class="absolute -top-10 -right-10 w-72 h-72 bg-accent-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -left-10 w-72 h-72 bg-brand-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        alt="Estudiantes felices conversando"
+                        class="relative rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 object-cover w-full h-64 md:h-96 lg:h-[500px]"
+                        onerror="this.src='https://placehold.co/600x500?text=Clase+de+Ingles'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-brand-600 tracking-wider uppercase mb-2">Por qué elegirnos</h2>
+                <h3 class="text-3xl font-bold text-gray-900">Más que una clase, una experiencia</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div
+                        class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Grupos Reducidos</h4>
+                    <p class="text-gray-600">Máximo 6 alumnos por clase para asegurar que tengas tiempo real de práctica
+                        y corrección personalizada.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div
+                        class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Enfoque Conversacional</h4>
+                    <p class="text-gray-600">Desde el primer día vas a hablar. Nuestra prioridad es que pierdas el miedo
+                        y ganes fluidez.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div
+                        class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Profesores Expertos</h4>
+                    <p class="text-gray-600">Docentes certificados y nativos apasionados por enseñar, no solo por
+                        corregir gramática.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div
+                    class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div
+                        class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Horarios Flexibles</h4>
+                    <p class="text-gray-600">Presencial o virtual. Mañana, tarde o noche. Adaptamos el aprendizaje a tu
+                        ritmo de vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="cursos" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-gray-900">Programas diseñados para vos</h3>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Sin importar tu edad o nivel, tenemos un camino trazado
+                    para tu éxito.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Kids & Teens -->
+                <div
+                    class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col">
+                    <div class="mb-4">
+                        <span
+                            class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">Iniciación</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Niños y Adolescentes</h4>
+                    <p class="text-gray-600 mb-6 flex-grow">Aprender jugando y conectando. Clases dinámicas que fomentan
+                        el amor por el idioma desde chicos.</p>
+                    <ul class="space-y-2 mb-8 text-gray-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>
+                            Juegos interactivos</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>
+                            Apoyo escolar</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>
+                            Exámenes internacionales</li>
+                    </ul>
+                    <a href="#contacto"
+                        class="block text-center w-full py-3 border border-brand-600 text-brand-600 font-semibold rounded-lg hover:bg-brand-50 transition">Consultar</a>
+                </div>
+
+                <!-- Adults -->
+                <div
+                    class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border-2 border-brand-500 transform md:-translate-y-4 flex flex-col relative">
+                    <div
+                        class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                        POPULAR</div>
+                    <div class="mb-4">
+                        <span
+                            class="bg-brand-100 text-brand-700 px-3 py-1 rounded-full text-xs font-bold uppercase">Intensivo
+                            / Regular</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Adultos</h4>
+                    <p class="text-gray-600 mb-6 flex-grow">Inglés práctico para la vida real. Ideal para viajeros,
+                        profesionales o desafío personal.</p>
+                    <ul class="space-y-2 mb-8 text-gray-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-brand-500"></i>
+                            Role-playing situaciones reales</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-brand-500"></i>
+                            Business English</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-brand-500"></i>
+                            Club de conversación</li>
+                    </ul>
+                    <a href="#contacto"
+                        class="block text-center w-full py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition">Más
+                        información</a>
+                </div>
+
+                <!-- Exam Prep -->
+                <div
+                    class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col">
+                    <div class="mb-4">
+                        <span
+                            class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase">Avanzado</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Exámenes Internacionales</h4>
+                    <p class="text-gray-600 mb-6 flex-grow">Preparación específica para certificaciones oficiales
+                        (Cambridge, TOEFL, IELTS).</p>
+                    <ul class="space-y-2 mb-8 text-gray-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-purple-500"></i>
+                            Simulacros de examen</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-purple-500"></i>
+                            Estrategias de tiempo</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-purple-500"></i>
+                            Material oficial</li>
+                    </ul>
+                    <a href="#contacto"
+                        class="block text-center w-full py-3 border border-brand-600 text-brand-600 font-semibold rounded-lg hover:bg-brand-50 transition">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="metodologia" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                        alt="Método de enseñanza" class="rounded-3xl shadow-2xl object-cover h-[400px] w-full"
+                        onerror="this.src='https://placehold.co/600x400?text=Metodologia'">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">Nuestra Metodología: <span
+                            class="text-brand-600">Active Learning</span></h3>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Creemos que el idioma se aprende usándolo, no estudiándolo como una fórmula matemática. Nuestro
+                        enfoque es 100% comunicativo.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="flex items-center justify-center h-8 w-8 rounded-full bg-brand-100 text-brand-600 font-bold">
+                                    1</div>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-lg font-bold text-gray-900">Input Comprensible</h5>
+                                <p class="text-gray-500">Material audiovisual auténtico (series, noticias, podcasts)
+                                    adaptado a tu nivel.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="flex items-center justify-center h-8 w-8 rounded-full bg-brand-100 text-brand-600 font-bold">
+                                    2</div>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-lg font-bold text-gray-900">Práctica Guiada</h5>
+                                <p class="text-gray-500">Ejercicios de habla donde el profesor te guía sin interrumpir
+                                    tu fluidez constantemente.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="flex items-center justify-center h-8 w-8 rounded-full bg-brand-100 text-brand-600 font-bold">
+                                    3</div>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-lg font-bold text-gray-900">Producción Real</h5>
+                                <p class="text-gray-500">Proyectos y debates sobre temas actuales que te interesan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center mb-16">Lo que dicen nuestros alumnos</h3>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-gray-800 p-8 rounded-2xl relative">
+                    <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
+                    <p class="text-gray-300 mb-6 italic">"Siempre me dio vergüenza hablar inglés, pero acá los profes te
+                        dan una confianza increíble. En 6 meses avancé más que en años de escuela."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center font-bold text-white">
+                            MC</div>
+                        <div class="ml-3">
+                            <p class="font-bold">María Clara</p>
+                            <p class="text-xs text-gray-400">Nivel Intermedio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-gray-800 p-8 rounded-2xl relative">
+                    <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
+                    <p class="text-gray-300 mb-6 italic">"Necesitaba rendir el First Certificate por trabajo. La
+                        preparación fue excelente, muchos simulacros y tips clave. ¡Aprobé con B!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold text-white">
+                            LG</div>
+                        <div class="ml-3">
+                            <p class="font-bold">Lucas Gomez</p>
+                            <p class="text-xs text-gray-400">Prep. Exámenes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-gray-800 p-8 rounded-2xl relative">
+                    <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
+                    <p class="text-gray-300 mb-6 italic">"Mis hijos van felices a clase. Ya no es una obligación, es un
+                        momento de juego. Me encanta ver cómo cantan canciones en inglés en casa."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center font-bold text-white">
+                            SP</div>
+                        <div class="ml-3">
+                            <p class="font-bold">Sofía P.</p>
+                            <p class="text-xs text-gray-400">Mamá de alumnos Kids</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-brand-50 relative overflow-hidden">
+        <!-- Decoracion de fondo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-brand-100 opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent-100 opacity-50 blur-3xl">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden md:flex">
+                <!-- Info Side -->
+                <div class="bg-brand-600 p-10 md:w-2/5 text-white flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Empezá tu camino hoy</h3>
+                        <p class="text-brand-100 mb-8">Dejanos tus datos y te contactamos para hacer una nivelación
+                            gratuita sin compromiso.</p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 mr-3 text-brand-200"></i>
+                                <span>+54 9 11 1234-5678</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 mr-3 text-brand-200"></i>
+                                <span>info@nextlevel.edu</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-brand-200"></i>
+                                <span>Av. Siempre Viva 123, Centro</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <p class="text-sm text-brand-200 mb-2">Seguinos:</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="hover:text-white text-brand-200 transition"><i data-lucide="instagram"
+                                    class="w-6 h-6"></i></a>
+                            <a href="#" class="hover:text-white text-brand-200 transition"><i data-lucide="facebook"
+                                    class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="p-10 md:w-3/5">
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');"
+                        class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition"
+                                placeholder="Juan Perez" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition"
+                                placeholder="juan@email.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Curso de interés</label>
+                            <select
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition bg-white">
+                                <option>Adultos</option>
+                                <option>Niños/Adolescentes</option>
+                                <option>Preparación Exámenes</option>
+                                <option>Empresas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Consulta (Opcional)</label>
+                            <textarea rows="3"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition"
+                                placeholder="¿Tienen horarios por la mañana?"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-brand-600 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-brand-700 hover:shadow-xl transition transform hover:-translate-y-0.5">
+                            Solicitar Información
+                        </button>
+
+                        <p class="text-xs text-center text-gray-400 mt-4">
+                            También podés escribirnos directo por
+                            <a href="#" class="text-green-600 font-semibold hover:underline">WhatsApp</a>.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 pt-12 pb-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="bg-gray-900 text-white p-1.5 rounded-lg">
+                    <i data-lucide="languages" class="w-5 h-5"></i>
+                </div>
+                <span class="font-bold text-lg text-gray-900">NextLevel</span>
+            </div>
+
+            <div class="text-sm text-gray-500 text-center md:text-right">
+                <p>&copy; 2024 NextLevel English Institute. Todos los derechos reservados.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-brand-600 transition">Política de Privacidad</a>
+                    <a href="#" class="hover:text-brand-600 transition">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const overlay = document.getElementById('menu-overlay');
+        const links = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            menu.classList.toggle('open');
+            overlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        btn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer click en un link
+        links.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+
+</html>
