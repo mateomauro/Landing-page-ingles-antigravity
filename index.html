@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-
+<html lang="es" class="scroll-smooth scroll-pt-24">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextLevel English Institute</title>
     <meta name="description" content="Aprende inglés práctico y real con clases dinámicas y profesores expertos.">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -61,14 +57,15 @@
         }
     </script>
     <style>
-        /* Ajustes finos para móviles */
+        /* Ajustes para el menú móvil */
         .mobile-menu {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
         }
 
         .mobile-menu.open {
             transform: translateX(0);
+            box-shadow: -10px 0 30px -10px rgba(0, 0, 0, 0.1);
         }
 
         .glass {
@@ -80,82 +77,102 @@
         .animation-delay-2000 {
             animation-delay: 2s;
         }
+
+        /* Corrección para gradientes de texto en Safari/Mobile */
+        .text-gradient-fix {
+            padding-bottom: 0.1em; /* Evita que se corten letras como g, j, y */
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
     </style>
 </head>
 
-<body class="font-sans text-gray-700 antialiased bg-gray-50">
+<body class="font-sans text-gray-700 antialiased bg-gray-50 selection:bg-brand-500 selection:text-white">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm transition-all duration-300"
+    <nav class="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300"
         id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="bg-brand-600 text-white p-2 rounded-lg">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="bg-brand-600 text-white p-2 rounded-lg group-hover:bg-brand-700 transition">
                         <i data-lucide="languages" class="w-6 h-6"></i>
                     </div>
                     <span class="font-bold text-xl tracking-tight text-gray-900">NextLevel<span
                             class="text-brand-600">English</span></span>
                 </div>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#beneficios" class="text-gray-600 hover:text-brand-600 font-medium transition">Por qué
+                    <a href="#beneficios" class="text-gray-600 hover:text-brand-600 font-medium transition text-sm lg:text-base">Por qué
                         elegirnos</a>
-                    <a href="#cursos" class="text-gray-600 hover:text-brand-600 font-medium transition">Cursos</a>
+                    <a href="#cursos" class="text-gray-600 hover:text-brand-600 font-medium transition text-sm lg:text-base">Cursos</a>
                     <a href="#metodologia"
-                        class="text-gray-600 hover:text-brand-600 font-medium transition">Metodología</a>
+                        class="text-gray-600 hover:text-brand-600 font-medium transition text-sm lg:text-base">Metodología</a>
                     <a href="#contacto"
-                        class="bg-brand-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-brand-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        class="bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-brand-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm lg:text-base">
                         Inscribirse Ahora
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2 transition">
                         <i data-lucide="menu" class="w-7 h-7"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu"
-            class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden flex flex-col pt-20 px-6 space-y-6">
-            <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-500">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            <a href="#beneficios" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Por qué
-                elegirnos</a>
-            <a href="#cursos" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Cursos</a>
-            <a href="#metodologia" class="text-lg font-medium text-gray-800 border-b pb-2 mobile-link">Metodología</a>
-            <a href="#contacto"
-                class="bg-brand-600 text-white text-center py-3 rounded-lg font-semibold shadow-md mobile-link">
-                Reservar Vacante
-            </a>
-        </div>
-        <!-- Overlay -->
-        <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden glass"></div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+    <div id="menu-overlay" class="fixed inset-0 bg-gray-900/50 z-50 hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+    
+    <div id="mobile-menu"
+        class="mobile-menu fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-[60] md:hidden flex flex-col shadow-2xl">
+        
+        <div class="p-6 flex justify-between items-center border-b border-gray-100">
+            <span class="font-bold text-lg text-gray-900">Menú</span>
+            <button id="close-menu-btn" class="text-gray-400 hover:text-gray-600 p-1 bg-gray-50 rounded-full transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col p-6 space-y-6 overflow-y-auto">
+            <a href="#beneficios" class="flex items-center text-lg font-medium text-gray-600 hover:text-brand-600 mobile-link group">
+                <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gray-400 group-hover:text-brand-600 transition"></i>
+                Por qué elegirnos
+            </a>
+            <a href="#cursos" class="flex items-center text-lg font-medium text-gray-600 hover:text-brand-600 mobile-link group">
+                <i data-lucide="book-open" class="w-5 h-5 mr-3 text-gray-400 group-hover:text-brand-600 transition"></i>
+                Cursos
+            </a>
+            <a href="#metodologia" class="flex items-center text-lg font-medium text-gray-600 hover:text-brand-600 mobile-link group">
+                <i data-lucide="lightbulb" class="w-5 h-5 mr-3 text-gray-400 group-hover:text-brand-600 transition"></i>
+                Metodología
+            </a>
+            
+            <div class="pt-6 mt-auto border-t border-gray-100">
+                <a href="#contacto"
+                    class="block w-full bg-brand-600 text-white text-center py-3.5 rounded-xl font-bold shadow-lg shadow-brand-200 mobile-link hover:bg-brand-700 transition">
+                    Reservar Vacante
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <!-- Text Content -->
-                <div class="mb-12 lg:mb-0 text-center lg:text-left">
+                <div class="mb-12 lg:mb-0 text-center lg:text-left relative z-10">
                     <div
-                        class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold mb-6 border border-brand-100">
-                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span> Inscripciones Abiertas 2024
+                        class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold mb-8 border border-brand-100">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span> Inscripciones Abiertas 2024
                     </div>
-                    <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.15] mb-6">
                         Hablá inglés con <br class="hidden lg:block">
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">confianza
-                            y fluidez</span>
+                        <span class="inline-block pt-2 pb-3 text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400 text-gradient-fix">
+                            confianza y fluidez
+                        </span>
                     </h1>
+                    
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                         Olvidate de memorizar reglas sin sentido. En NextLevel aprendés el inglés que necesitás para
                         viajar, trabajar y conectarte con el mundo real.
@@ -172,25 +189,23 @@
                         </a>
                     </div>
 
-                    <!-- Social Proof Mini -->
                     <div class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
-                        <div class="flex -space-x-2">
-                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover"
                                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100"
                                 alt="Student">
-                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover"
                                 src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100"
                                 alt="Student">
-                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover"
                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100"
                                 alt="Student">
                         </div>
-                        <p>+500 alumnos graduados</p>
+                        <p class="font-medium">+500 alumnos graduados</p>
                     </div>
                 </div>
 
-                <!-- Hero Image -->
-                <div class="relative lg:h-full">
+                <div class="relative lg:h-full mt-10 lg:mt-0">
                     <div
                         class="absolute -top-10 -right-10 w-72 h-72 bg-accent-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
                     </div>
@@ -200,14 +215,13 @@
 
                     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                         alt="Estudiantes felices conversando"
-                        class="relative rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 object-cover w-full h-64 md:h-96 lg:h-[500px]"
+                        class="relative rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 object-cover w-full h-[300px] md:h-[400px] lg:h-[550px]"
                         onerror="this.src='https://placehold.co/600x500?text=Clase+de+Ingles'">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
     <section id="beneficios" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -216,7 +230,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
                 <div
                     class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
                     <div
@@ -228,7 +241,6 @@
                         y corrección personalizada.</p>
                 </div>
 
-                <!-- Feature 2 -->
                 <div
                     class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
                     <div
@@ -240,7 +252,6 @@
                         y ganes fluidez.</p>
                 </div>
 
-                <!-- Feature 3 -->
                 <div
                     class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
                     <div
@@ -252,7 +263,6 @@
                         corregir gramática.</p>
                 </div>
 
-                <!-- Feature 4 -->
                 <div
                     class="group p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
                     <div
@@ -267,7 +277,6 @@
         </div>
     </section>
 
-    <!-- Courses -->
     <section id="cursos" class="py-20 bg-brand-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -277,7 +286,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Kids & Teens -->
                 <div
                     class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col">
                     <div class="mb-4">
@@ -287,7 +295,7 @@
                     <h4 class="text-2xl font-bold text-gray-900 mb-4">Niños y Adolescentes</h4>
                     <p class="text-gray-600 mb-6 flex-grow">Aprender jugando y conectando. Clases dinámicas que fomentan
                         el amor por el idioma desde chicos.</p>
-                    <ul class="space-y-2 mb-8 text-gray-500">
+                    <ul class="space-y-3 mb-8 text-gray-500 text-sm">
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>
                             Juegos interactivos</li>
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>
@@ -299,9 +307,8 @@
                         class="block text-center w-full py-3 border border-brand-600 text-brand-600 font-semibold rounded-lg hover:bg-brand-50 transition">Consultar</a>
                 </div>
 
-                <!-- Adults -->
                 <div
-                    class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border-2 border-brand-500 transform md:-translate-y-4 flex flex-col relative">
+                    class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border-2 border-brand-500 transform md:-translate-y-4 flex flex-col relative z-10">
                     <div
                         class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
                         POPULAR</div>
@@ -313,7 +320,7 @@
                     <h4 class="text-2xl font-bold text-gray-900 mb-4">Adultos</h4>
                     <p class="text-gray-600 mb-6 flex-grow">Inglés práctico para la vida real. Ideal para viajeros,
                         profesionales o desafío personal.</p>
-                    <ul class="space-y-2 mb-8 text-gray-500">
+                    <ul class="space-y-3 mb-8 text-gray-500 text-sm">
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-brand-500"></i>
                             Role-playing situaciones reales</li>
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-brand-500"></i>
@@ -326,7 +333,6 @@
                         información</a>
                 </div>
 
-                <!-- Exam Prep -->
                 <div
                     class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col">
                     <div class="mb-4">
@@ -336,7 +342,7 @@
                     <h4 class="text-2xl font-bold text-gray-900 mb-4">Exámenes Internacionales</h4>
                     <p class="text-gray-600 mb-6 flex-grow">Preparación específica para certificaciones oficiales
                         (Cambridge, TOEFL, IELTS).</p>
-                    <ul class="space-y-2 mb-8 text-gray-500">
+                    <ul class="space-y-3 mb-8 text-gray-500 text-sm">
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-purple-500"></i>
                             Simulacros de examen</li>
                         <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-purple-500"></i>
@@ -351,13 +357,13 @@
         </div>
     </section>
 
-    <!-- Methodology -->
     <section id="metodologia" class="py-20 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:flex lg:items-center lg:gap-16">
                 <div class="lg:w-1/2 mb-10 lg:mb-0">
                     <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
                         alt="Método de enseñanza" class="rounded-3xl shadow-2xl object-cover h-[400px] w-full"
+                        loading="lazy"
                         onerror="this.src='https://placehold.co/600x400?text=Metodologia'">
                 </div>
                 <div class="lg:w-1/2">
@@ -410,20 +416,18 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="py-20 bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-3xl font-bold text-center mb-16">Lo que dicen nuestros alumnos</h3>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
                 <div class="bg-gray-800 p-8 rounded-2xl relative">
                     <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
                     <p class="text-gray-300 mb-6 italic">"Siempre me dio vergüenza hablar inglés, pero acá los profes te
                         dan una confianza increíble. En 6 meses avancé más que en años de escuela."</p>
                     <div class="flex items-center">
                         <div
-                            class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center font-bold text-white">
+                            class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center font-bold text-white text-sm">
                             MC</div>
                         <div class="ml-3">
                             <p class="font-bold">María Clara</p>
@@ -432,14 +436,13 @@
                     </div>
                 </div>
 
-                <!-- Review 2 -->
                 <div class="bg-gray-800 p-8 rounded-2xl relative">
                     <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
                     <p class="text-gray-300 mb-6 italic">"Necesitaba rendir el First Certificate por trabajo. La
                         preparación fue excelente, muchos simulacros y tips clave. ¡Aprobé con B!"</p>
                     <div class="flex items-center">
                         <div
-                            class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold text-white">
+                            class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold text-white text-sm">
                             LG</div>
                         <div class="ml-3">
                             <p class="font-bold">Lucas Gomez</p>
@@ -448,14 +451,13 @@
                     </div>
                 </div>
 
-                <!-- Review 3 -->
                 <div class="bg-gray-800 p-8 rounded-2xl relative">
                     <i data-lucide="quote" class="text-brand-500 w-10 h-10 mb-4 opacity-50"></i>
                     <p class="text-gray-300 mb-6 italic">"Mis hijos van felices a clase. Ya no es una obligación, es un
                         momento de juego. Me encanta ver cómo cantan canciones en inglés en casa."</p>
                     <div class="flex items-center">
                         <div
-                            class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center font-bold text-white">
+                            class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center font-bold text-white text-sm">
                             SP</div>
                         <div class="ml-3">
                             <p class="font-bold">Sofía P.</p>
@@ -467,16 +469,13 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contacto" class="py-20 bg-brand-50 relative overflow-hidden">
-        <!-- Decoracion de fondo -->
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-brand-100 opacity-50 blur-3xl"></div>
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent-100 opacity-50 blur-3xl">
         </div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden md:flex">
-                <!-- Info Side -->
                 <div class="bg-brand-600 p-10 md:w-2/5 text-white flex flex-col justify-between">
                     <div>
                         <h3 class="text-2xl font-bold mb-6">Empezá tu camino hoy</h3>
@@ -510,7 +509,6 @@
                     </div>
                 </div>
 
-                <!-- Form Side -->
                 <div class="p-10 md:w-3/5">
                     <form onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');"
                         class="space-y-5">
@@ -558,7 +556,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 pt-12 pb-8">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -579,7 +576,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
         // Inicializar iconos
         lucide.createIcons();
@@ -592,9 +588,28 @@
         const links = document.querySelectorAll('.mobile-link');
 
         function toggleMenu() {
-            menu.classList.toggle('open');
-            overlay.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
+            const isOpen = menu.classList.contains('open');
+            
+            if (isOpen) {
+                // Cerrar
+                menu.classList.remove('open');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300); // Esperar a que termine la animación
+                document.body.classList.remove('overflow-hidden');
+            } else {
+                // Abrir
+                overlay.classList.remove('hidden');
+                // Timeout pequeño para permitir que el navegador renderice el 'block' antes de la opacidad
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    overlay.classList.add('opacity-100');
+                    menu.classList.add('open');
+                }, 10);
+                document.body.classList.add('overflow-hidden');
+            }
         }
 
         btn.addEventListener('click', toggleMenu);
